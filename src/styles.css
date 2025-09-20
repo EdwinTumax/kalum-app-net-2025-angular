@@ -1,0 +1,46 @@
+/* Importa el core de Angular Material */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* Opcional: personalizar con variables */
+:root {
+  --mdc-theme-primary: #3f51b5; /* Indigo */
+  --mdc-theme-secondary: #e91e63; /* Pink */
+  --mdc-theme-error: #f44336; /* Red */
+}
+
+mat-toolbar mat-icon {
+  color: white;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+mat-sidenav-container {
+  height: 100vh; /* ocupa toda la ventana */
+}
+
+mat-sidenav {
+  height: 100%;  /* ocupa toda la altura del contenedor */
+}
+
+mat-sidenav app-sidenav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Asegura que mat-icon esté centrado verticalmente y con margen a la derecha */
+mat-list-item mat-icon {
+  margin-right: 16px;      /* espacio entre ícono y texto */
+  vertical-align: middle;  /* centra verticalmente respecto al texto */
+  font-size: 24px;         /* tamaño consistente */
+}
+
+/* Opcional: alinear texto verticalmente con ícono */
+mat-list-item .menu-text {
+  display: inline-block;
+  line-height: 24px;       /* igual al tamaño del icono */
+  vertical-align: middle;
+}
