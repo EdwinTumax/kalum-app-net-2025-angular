@@ -20,7 +20,6 @@ export class Menu {
  
   @Output() toggleSidenav = new EventEmitter<void>();
   
-
   onToggleSidenav() {
     this.toggleSidenav.emit();
   }
