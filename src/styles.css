@@ -3,26 +3,32 @@
 
 /* Opcional: personalizar con variables */
 :root {
-  --mdc-theme-primary: #3f51b5; /* Indigo */
-  --mdc-theme-secondary: #e91e63; /* Pink */
-  --mdc-theme-error: #f44336; /* Red */
+  --mdc-theme-primary: #3f51b5;
+  /* Indigo */
+  --mdc-theme-secondary: #e91e63;
+  /* Pink */
+  --mdc-theme-error: #f44336;
+  /* Red */
 }
 
 mat-toolbar mat-icon {
   color: white;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
 
 mat-sidenav-container {
-  height: 100vh; /* ocupa toda la ventana */
+  height: 100vh;
+  /* ocupa toda la ventana */
 }
 
 mat-sidenav {
-  height: 100%;  /* ocupa toda la altura del contenedor */
+  height: 100%;
+  /* ocupa toda la altura del contenedor */
 }
 
 mat-sidenav app-sidenav {
@@ -33,14 +39,48 @@ mat-sidenav app-sidenav {
 
 /* Asegura que mat-icon esté centrado verticalmente y con margen a la derecha */
 mat-list-item mat-icon {
-  margin-right: 16px;      /* espacio entre ícono y texto */
-  vertical-align: middle;  /* centra verticalmente respecto al texto */
-  font-size: 24px;         /* tamaño consistente */
+  margin-right: 16px;
+  /* espacio entre ícono y texto */
+  vertical-align: middle;
+  /* centra verticalmente respecto al texto */
+  font-size: 24px;
+  /* tamaño consistente */
 }
 
 /* Opcional: alinear texto verticalmente con ícono */
 mat-list-item .menu-text {
   display: inline-block;
-  line-height: 24px;       /* igual al tamaño del icono */
+  line-height: 24px;
+  /* igual al tamaño del icono */
   vertical-align: middle;
+}
+
+/* Contenedor principal: centra vertical y horizontal */
+.login-container {
+  height: 100vh;
+  /* toda la altura de la ventana */
+  display: flex;
+  justify-content: center;
+  /* horizontal */
+  align-items: center;
+  /* vertical */
+  background-color: #f5f5f5;
+  /* opcional, color de fondo */
+}
+
+/* Card del login */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  /* tamaño máximo */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* espacio vertical entre los controles */
+}
+
+/* Input full width */
+.full-width {
+  width: 100%;
 }
