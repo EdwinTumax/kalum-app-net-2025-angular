@@ -7,6 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from '../auth';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-login',
@@ -23,27 +25,50 @@ import Swal from 'sweetalert2';
 })
 export class Login implements OnInit {
   form!: FormGroup;
-  
-  constructor(private fb: FormBuilder, private router: Router) {
+  user: User = new User();
+
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
 
   }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       username: ['', Validators.required],
-      password: ['',Validators.required]
+      password: ['', Validators.required]
     });
   }
 
   onSubmit() {
-    if(this.form.valid) {
-      Swal.fire({
-        title: 'Login',
-        icon: 'success',
-        draggable: true
-      }).then((result) => {
-        if(result.isConfirmed) {  
-          this.router.navigate(['/'])
+    if (this.form.valid) {
+      this.user.username = this.form.get('username')?.value;
+      this.user.password = this.form.get('password')?.value;
+      this.authService.login(this.user).subscribe({
+        next: (response: any) => {
+          if (response.success) {
+            this.authService.saveToken(response.data.token);
+            const payload = this.authService.getPayload(response.data.token);
+            console.log(payload);
+            this.authService.saveUser(payload);
+            Swal.fire({
+              title: "Login",
+              text: `Bienvenido al sistema ¡${this.user.username}!`,
+              icon: "success"
+            }).then(result => {
+              if (result.isConfirmed) {
+                this.router.navigate(['/']);
+              }
+            });
+          }
+        }, error: (data: any) => {
+          Swal.fire({
+            title: "Login failed",
+            text: data.error.errors,
+            icon: "error"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['/login'])
+            }
+          });
         }
       });
     }
