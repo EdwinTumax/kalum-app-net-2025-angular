@@ -84,3 +84,21 @@ mat-list-item .menu-text {
 .full-width {
   width: 100%;
 }
+
+.alinear {
+  text-align: center;
+  margin-top: 20px;
+}
+
+ul li {
+  list-style: none;
+}
+
+mat-form-field {
+  width: 140%;
+}
+
+.text-center {
+  text-align: center;
+}
+
