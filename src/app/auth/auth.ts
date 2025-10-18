@@ -78,5 +78,12 @@ export class AuthService {
     return false;
   }
 
+  isTokenExpired(): boolean {
+    let now = new Date().getTime() / 1000;
+    if(this.getPayload(this.token).exp < now) {
+      return true;
+    }
+    return false;
+  }
 
 }
