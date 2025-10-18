@@ -26,6 +26,7 @@ import { User } from '../model/user';
 export class Login implements OnInit {
   form!: FormGroup;
   user: User = new User();
+  roles: any[] = [];
 
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
 
@@ -33,8 +34,8 @@ export class Login implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+      username: ['edwintumax', Validators.required],
+      password: ['Inicio.2025', Validators.required]
     });
   }
 
