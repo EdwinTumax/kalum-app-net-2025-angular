@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>
+    ROLES
+</h2>
+<mat-dialog-content>
+    <form [formGroup]="formRoleGroup">
+        <div class="form-input-container">
+            <mat-form-field>
+                <input formControlName="roleName" matInput placeholder="Nombre del rol" required="">
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button color="primary" (click)="save()">
+        <mat-icon>save</mat-icon>Guardar
+    </button>
+    <button mat-button color="primary" (click)="onCancel()">
+        <mat-icon>cancel</mat-icon>Cancelar
+    </button>
+</mat-dialog-actions>

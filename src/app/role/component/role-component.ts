@@ -10,6 +10,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { FormRole } from './form-role';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-role-component',
@@ -22,7 +25,8 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
     MatButtonModule,
     MatTableModule,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
   ],
   templateUrl: './role-component.html',
   styles: ``
@@ -34,13 +38,32 @@ export class RoleComponent implements OnInit {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator
 
-  constructor(private roleService: RoleService) {
+  constructor(private roleService: RoleService, private dialogForm: MatDialog) {
   }
 
   ngOnInit(): void {
+    this.getRoles()
+  }
+
+  getRoles() {
     this.roleService.getListRole().subscribe((response) => {      
       this.getUserData(response.data);
     });
+  }
+
+  openFormDialog() {
+    const dialogFormRoleRef = this.dialogForm.open(FormRole, {width: '450px'})
+      .afterClosed()
+        .subscribe(handlerResult => {
+          if(handlerResult == 1) {
+            Swal.fire('Roles','El registro fue creado exitosamente','success').then((result) => {
+              if(result.isConfirmed) {
+                this.getRoles();
+              }
+            }); 
+          }
+        });
+
   }
 
   getUserData(data: any) {
