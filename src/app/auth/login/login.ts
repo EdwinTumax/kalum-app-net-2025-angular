@@ -44,7 +44,8 @@ export class Login implements OnInit {
       this.user.username = this.form.get('username')?.value;
       this.user.password = this.form.get('password')?.value;
       this.authService.login(this.user).subscribe({
-        next: (response: any) => {
+        next: (response: any) => {         
+          console.log(response); 
           if (response.success) {
             this.authService.saveToken(response.data.token);
             const payload = this.authService.getPayload(response.data.token);
@@ -61,6 +62,7 @@ export class Login implements OnInit {
             });
           }
         }, error: (data: any) => {
+          console.log(data);
           Swal.fire({
             title: "Login failed",
             text: data.error.errors,
