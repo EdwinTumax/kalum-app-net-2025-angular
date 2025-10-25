@@ -21,7 +21,7 @@ export class AuthService {
   }
 
   public get token(): any {
-    if(this._token != null) {
+    if(this._token != null && this._token !== undefined && this._token !== '') {
       return this._token;
     } else if(this._token == null && localStorage.getItem('token') != null) {
       this._token = JSON.stringify(localStorage.getItem('token') as string);
