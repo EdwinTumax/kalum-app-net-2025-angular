@@ -3,8 +3,8 @@
     <mat-card-header>
         <div>
             <mat-form-field hintLabel="Buscar" appearance="fill">
-                <mat-label>Nombre del role</mat-label>
-                <input matInput #input>
+                <mat-label>Buscar por Id</mat-label>
+                <input matInput #input (keydown.enter)="searchRoleById(input.value)">
             </mat-form-field>
         </div>
     </mat-card-header>
@@ -38,19 +38,14 @@
             <ng-container matColumnDef="acciones">
                 <th class="text-center-column" mat-header-cell *matHeaderCellDef>ACCIONES</th>
                 <td class="text-center-column" mat-cell *matCellDef="let element; let i=index">
-                    <button mat-icon-button color="accent">
+                    <button mat-icon-button color="accent" (click)="editRole(element.id, element.name)">
                         <mat-icon aria-label="Edit">
                             edit
                         </mat-icon>
                     </button>
-                    <button mat-icon-button color="accent">
+                    <button mat-icon-button color="accent" (click)="deleteRole(element.id)">
                         <mat-icon aria-label="Delete">
                             delete
-                        </mat-icon>
-                    </button>
-                    <button mat-icon-button color="accent">
-                        <mat-icon aria-label="Asignar">
-                            assignment
                         </mat-icon>
                     </button>
                 </td>                
