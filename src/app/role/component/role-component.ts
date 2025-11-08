@@ -109,7 +109,7 @@ export class RoleComponent implements OnInit {
         });
       }
     });
-  }  
+  }
 
   getUserData(data: any) {
     const dataRoles: RoleElement[] = [];
@@ -124,7 +124,35 @@ export class RoleComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  searchRoleById(id: string) {
+    this.roleService.searchById(id).subscribe({
+      next: (handlerResult: any) => {
+        if (id && id != undefined && id.length > 0) {
+          if (handlerResult.success) {
+            const result = { number: 1, ...handlerResult.data }
+            const dataRoles: RoleElement[] = [result];
+            this.dataSource = new MatTableDataSource<RoleElement>(dataRoles);
+            this.dataSource.paginator = this.paginator;
+          } else {
+            this.getRoles();
+          }
+        } else {
+          this.getRoles();
+        }
+      },
+      error: (e: any) => {
+        Swal.fire('Roles', e.error.message ? `${e.error.message}` : ` No se eoncontro ningún registro con el id ${id}`, 'error').then((result) => {
+          if (result.isConfirmed) {
+            console.log('Error');
+          }
+        });
+      }
+    });
+  }
+
 }
+
+
 
 export interface RoleElement {
   number: number,
