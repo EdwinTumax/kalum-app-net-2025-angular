@@ -10,13 +10,13 @@ export const routes: Routes = [
         children: [
             {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
             {path: 'roles', loadComponent: () => import('./role/component/role-component').then((c) => c.RoleComponent)},
-            { path: 'dashboard', loadComponent: () => import('./pages/dashboard/dashboard').then((c) => c.Dashboard) }
+            {path: 'dashboard', loadComponent: () => import('./pages/dashboard/dashboard').then((c) => c.Dashboard) }
         ]
     },
     {
         path: 'login', component: Login
     },
     {
-        path: '**', redirectTo: ''
+        path: '**', redirectTo: 'dashboard'
     }
 ];

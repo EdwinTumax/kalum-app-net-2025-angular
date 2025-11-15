@@ -12,8 +12,7 @@
             </mat-card-header>
             <img mat-card-image src={{carrier.imagen}} alt="Electronica Industrial">
             <mat-card-content class="banner-text">
-                <p>
-                    {{carrier.descripcion}}
+                <p [innerHTML]="carrier.descripcion">
                 </p>
             </mat-card-content>
             <mat-card-actions>

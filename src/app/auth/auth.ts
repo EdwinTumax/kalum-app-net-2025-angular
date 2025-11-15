@@ -86,4 +86,12 @@ export class AuthService {
     return false;
   }
 
+  hasRole(role: string): boolean {
+    if(this.user.roles.includes(role)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }

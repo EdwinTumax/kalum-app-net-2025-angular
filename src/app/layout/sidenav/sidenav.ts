@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../auth/auth';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-sidenav',
@@ -11,13 +12,14 @@ import { AuthService } from '../../auth/auth';
     CommonModule,
     MatListModule,
     MatIconModule,
-    RouterModule    
+    RouterModule,
+    MatDividerModule
   ],
   templateUrl: './sidenav.html'
 })
 export class Sidenav {
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router,public authService: AuthService) {
 
   }
 

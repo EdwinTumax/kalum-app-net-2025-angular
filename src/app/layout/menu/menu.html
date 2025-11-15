@@ -3,7 +3,10 @@
         <mat-icon>menu</mat-icon>
     </button>
     <span style="flex: 1 1 auto"></span>
-    <button mat-icon-button (click)="loginLogout()">
+    <button mat-icon-button (click)="loginLogout()" *ngIf="authService.isAuthenticated()">
         <mat-icon>logout</mat-icon>
+    </button>
+    <button mat-icon-button (click)="login()" *ngIf="!authService.isAuthenticated()">
+        <mat-icon>account_circle</mat-icon>
     </button>
 </mat-toolbar>

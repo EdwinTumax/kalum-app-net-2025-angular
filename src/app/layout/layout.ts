@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { Sidenav } from './sidenav/sidenav';
+import { AuthService } from '../auth/auth';
+import { MatDivider } from "@angular/material/divider";
 
 @Component({
   selector: 'app-layout',
@@ -18,12 +20,17 @@ import { Sidenav } from './sidenav/sidenav';
     MatIconModule,
     MatButtonModule,
     RouterModule,
-    Sidenav
-  ],
+    Sidenav,
+    MatDivider
+],
   templateUrl: './layout.html',
   styles: ``
 })
 export class Layout {
+
+  constructor(public authService: AuthService) {
+
+  }
 
   isSidenavOpen = signal(false);
 
