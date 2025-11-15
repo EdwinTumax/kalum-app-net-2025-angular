@@ -1,0 +1,34 @@
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box div {
+  width: 100px;
+  height: 100px;
+}
+
+.kalum-carriers-card {
+  max-width: 400px;
+  margin: 1%;
+}
+
+.kalum-carriers-header-image {
+  background-image: url('/images/clave.png');
+  background-size: cover;
+}
+
+.banner-text {
+    padding: 30px;
+    background-color: #F8B412;
+    text-align: center;
+    color: #303f9f;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.text-color-kalum {
+    color: white;
+}
+

@@ -1,1 +1,26 @@
-<p>dashboard works!</p>
+<mat-card [style.backgroud]="'#303F9F'">
+    <mat-card-title style="text-align: center; color: white; margin-top: 30px;">
+        <img src="images/logotipo.png" alt="kalum app">
+    </mat-card-title>
+    <div class="box">
+
+        <mat-card class="kalum-carriers-card" *ngFor="let carrier of carriers">
+            <mat-card-header>
+                <div mat-card-avatar class="kalum-carriers-header-image"></div>
+                <mat-card-title>{{carrier.carrera}}</mat-card-title>
+                <mat-card-subtitle>{{carrier.subTitulo}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src={{carrier.imagen}} alt="Electronica Industrial">
+            <mat-card-content class="banner-text">
+                <p>
+                    {{carrier.descripcion}}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>ASIGNARME</button>
+                <button mat-button>COMPARTIR</button>
+            </mat-card-actions>
+        </mat-card>
+
+    </div>
+</mat-card>
