@@ -1,0 +1,44 @@
+<mat-card>
+    <h2 class="alinear">Listado de fechas de examenes de admisión</h2>
+    <mat-card-header>
+        <div>
+            <mat-form-field hintLabel="Buscar por fecha" appearance="fill">
+                <mat-label>Buscar</mat-label>
+                <input matInput #input>
+            </mat-form-field>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table class="mat-cell" [dataSource]="dataSource">
+            <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+            <ng-container matColumnDef="number">
+                <th class="text-center-column" mat-header-cell *matHeaderCellDef>NUMBER</th>
+                <td class="text-center-column" mat-cell *matCellDef="let element">
+                    <ng-container *ngIf="element">
+                        {{element.number}}
+                    </ng-container>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="fecha">
+                <th class="text-center-column" mat-header-cell *matHeaderCellDef>FECHA EXAMEN</th>
+                <td class="text-center-column" mat-cell *matCellDef="let element">
+                    <ng-container *ngIf="element">
+                        {{element.fecha}}
+                    </ng-container>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="acciones">
+                <th class="text-center-column" mat-header-cell *matHeaderCellDef>ACCIONES</th>
+                <td class="text-center-column" mat-cell *matCellDef="let element; let i=index">
+                    <button mat-icon-button color="accent" (click)="openFormAsignarExamen()">
+                        <mat-icon aria-label="Asignar">
+                            assignment
+                        </mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+        </table>
+    </mat-card-content>
+
+</mat-card>

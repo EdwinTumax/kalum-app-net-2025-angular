@@ -29,4 +29,14 @@ export class Sidenav {
     }
   }
 
+  examenesAdmision() {
+    if(this.authService.isAuthenticated()) {
+      this.router.navigate(['examenes']);
+    }
+  }
+
+  dashboard() {
+    this.router.navigate(['dashboard']);
+  }
+
 }

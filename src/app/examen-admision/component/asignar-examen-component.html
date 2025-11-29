@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>
+    Solicitud de examen de admisión
+</h2>
+<mat-dialog-content>
+    <form [formGroup]="asignacionExamenForm">
+        <div class="form-input-container">
+            <mat-form-field>
+                <input formControlName="apellidos" matInput placeholder="Apellidos" required>
+            </mat-form-field>
+        </div>
+        <div class="form-input-container">
+            <mat-form-field>
+                <input formControlName="nombres" matInput placeholder="Nombres" required>
+            </mat-form-field>
+        </div>
+        <div class="form-input-container">
+            <mat-form-field>
+                <input formControlName="direccion" matInput placeholder="Direccion" required>
+            </mat-form-field>
+        </div>
+        <div class="form-input-container">
+            <mat-form-field>
+                <input formControlName="telefono" matInput placeholder="Telefono" required>
+            </mat-form-field>
+        </div>
+        <div class="form-input-container">
+            <mat-form-field>
+                <input formControlName="email" matInput placeholder="Email" required>
+            </mat-form-field>
+        </div>
+        <div class="form-input-container">
+            <mat-form-field>
+                <mat-label>Carrera Técnica</mat-label>
+                <mat-select formControlName="carreraId">
+                    <mat-option *ngFor="let carrera of carreras" [value] = "carrera.carreraId">
+                        {{carrera.carrera}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>

@@ -10,6 +10,7 @@ export const routes: Routes = [
         children: [
             {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
             {path: 'roles', loadComponent: () => import('./role/component/role-component').then((c) => c.RoleComponent)},
+            {path: 'examenes', loadComponent: () => import('./examen-admision/component/examen-admision-component').then((c) => c.ExamenAdmisionComponent)},
             {path: 'dashboard', loadComponent: () => import('./pages/dashboard/dashboard').then((c) => c.Dashboard) }
         ]
     },
