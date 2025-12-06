@@ -11,6 +11,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ExamenAdmsion } from '../model/examen-admsion.model';
 import { AsignarExamenComponent } from './asignar-examen-component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-examen-admision-component',
@@ -30,6 +31,7 @@ import { AsignarExamenComponent } from './asignar-examen-component';
 })
 
 export class ExamenAdmisionComponent implements OnInit {
+  carreraId: any;
   displayColumns: string[] = ['number','fecha','acciones'];
   dataSource = new MatTableDataSource<ExamenAdmisionElement>();
   @ViewChild(MatPaginator)
@@ -50,12 +52,13 @@ export class ExamenAdmisionComponent implements OnInit {
     }
   ]
 
-  ngOnInit(): void {
-    this.getExamenesAdmision();
+  constructor(private matDialog: MatDialog, private route: ActivatedRoute) {
+
   }
 
-  constructor(private matDialog: MatDialog) {
-
+  ngOnInit(): void {
+    this.carreraId = this.route.snapshot.paramMap.get('carreraId') ? this.route.snapshot.paramMap.get('carreraId') : '';
+    this.getExamenesAdmision();
   }
 
   getExamenesAdmision(): void {
@@ -75,8 +78,8 @@ export class ExamenAdmisionComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  openFormAsignarExamen() : void {
-    this.matDialog.open(AsignarExamenComponent, {width: '450px'});
+  openFormAsignarExamen(examenId: string) : void {
+    this.matDialog.open(AsignarExamenComponent, {width: '450px', data: {examenId: examenId, carreraId: this.carreraId}});
   }
 
 }

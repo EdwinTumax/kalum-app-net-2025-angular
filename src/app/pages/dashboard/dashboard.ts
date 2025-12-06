@@ -66,7 +66,7 @@ export class Dashboard {
 
   }
 
-  asignar(): void {
+  asignar(carreraId: string): void {
     if (this.authService.hasRole('ROLE_ACCOUNT')) {
       Swal.fire({
         icon: "warning",
@@ -75,7 +75,7 @@ export class Dashboard {
         footer: '<a href="#">Kalum v.1</a>'
       }).then(ressponse => {
         if (ressponse.isConfirmed) {
-          this.router.navigate(['examenes']);
+          this.router.navigate([`examenes/${carreraId}`]);
         }
       });
     }

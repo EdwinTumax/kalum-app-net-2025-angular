@@ -1,0 +1,26 @@
+<div class="parent">
+    <h2 mat-dialog-title>
+        Finalizar proceso de solicitud de expediente
+    </h2>
+    <mat-dialog-content>
+        <form class="form-parent" [formGroup]="finaliceCantidateProcessForm">
+            <div class="form-container">
+                <mat-form-field>
+                    <input formControlName="email" matInput placeholder="Email" required="">
+                </mat-form-field>
+            </div>
+            <div class="form-container">
+                <mat-form-field>
+                    <input formControlName="identityUser" matInput placeholder="Identificador" required="">
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div>
+            <button mat-button color="primary" (click)="save()">
+                <mat-icon>save</mat-icon>Actualizar
+            </button>
+        </div>
+    </mat-dialog-actions>
+</div>

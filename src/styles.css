@@ -132,3 +132,15 @@ mat-header-cell:nth-child(1) {
 .header-profile-card {
   margin-top: 20px;
 }
+
+.parent {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-parent {
+  width: 450px;
+}

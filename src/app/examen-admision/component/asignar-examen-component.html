@@ -32,11 +32,39 @@
             <mat-form-field>
                 <mat-label>Carrera Técnica</mat-label>
                 <mat-select formControlName="carreraId">
-                    <mat-option *ngFor="let carrera of carreras" [value] = "carrera.carreraId">
+                    <mat-option *ngFor="let carrera of carreras" [value]="carrera.carreraId">
                         {{carrera.carrera}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-input-container">
+            <mat-form-field>
+                <mat-label>Jornada</mat-label>
+                <mat-select formControlName="jornadaId">
+                    <mat-option *ngFor="let jornada of jornadas" [value]="jornada.jornadaId">
+                        {{jornada.prefijo}} - {{jornada.descripcion}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-input-container">
+            <mat-form-field>
+                <mat-label>Fecha Examen</mat-label>
+                <mat-select formControlName="examenId">
+                    <mat-option *ngFor="let examen of examenesAdmision" [value]="examen.examenId">
+                        {{examen.fecha}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
     </form>
 </mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button color="primary" [disabled]="asignacionExamenForm.invalid" (click)="enviar()">
+        <mat-icon>save</mat-icon>Enviar
+    </button>
+    <button mat-button color="primary" (click)="close()">
+        <mat-icon>cancel</mat-icon> Cancelar
+    </button>
+</mat-dialog-actions>

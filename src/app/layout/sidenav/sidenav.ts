@@ -35,6 +35,12 @@ export class Sidenav {
     }
   }
 
+  estatusExamenAdmision() {
+    if(this.authService.isAuthenticated()) {
+      this.router.navigate(['status-examen']);
+    }
+  }
+
   dashboard() {
     this.router.navigate(['dashboard']);
   }
